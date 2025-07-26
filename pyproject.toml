@@ -4,3 +4,4 @@ version = "2025.0.0a1"
 dependencies = [
   "rio-ui",
 ]
+readme = "README.md"
