@@ -67,4 +67,7 @@ if __name__ == '__main__':
     print('   uvicorn main:app --host 127.0.0.1 --port 8080 --reload')
 
     # Run with Uvicorn (without reload to avoid the error)
-    uvicorn.run(app, host='127.0.0.1', port=8080, reload=False)
+    try:
+        uvicorn.run(app, host='127.0.0.1', port=8080, reload=False)
+    except KeyboardInterrupt:
+        print('\n👋 Server stopped')

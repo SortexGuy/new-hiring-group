@@ -1,4 +1,6 @@
 # Talentos Asociados (Nombre WIP)
-~MCP Hiring Group~
+~~MCP Hiring Group~~
 
+---
+Usando [Rio](https://rio.dev/)
 

@@ -1,2 +1,11 @@
-Django==5.2.4
-rio-ui==0.11.1
+asgiref
+Django
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+PyJWT
+pytz
+sqlparse
+psycopg2-binary
+python-dotenv
+rio-ui
