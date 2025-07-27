@@ -64,7 +64,7 @@ from .serializers import (
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 
 class AreasConocimientoViewSet(viewsets.ModelViewSet):
@@ -90,6 +90,12 @@ class ProfesionesViewSet(viewsets.ModelViewSet):
 class UsuariosViewSet(viewsets.ModelViewSet):
     queryset = Usuarios.objects.all()
     serializer_class = UsuariosSerializer
+
+    # def list(self, request):
+    #     pass
+    #
+    # def retrieve(self, request, pk=None):
+    #     pass
 
 
 class EmpresasViewSet(viewsets.ModelViewSet):
@@ -133,4 +139,4 @@ class RecibosViewSet(viewsets.ModelViewSet):
 
 
 def health_check(request):
-    return JsonResponse({"status": "healthy", "service": "django-backend"})
+    return JsonResponse({'status': 'healthy', 'service': 'django-backend'})

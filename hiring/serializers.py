@@ -20,8 +20,8 @@ from .models import (
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "password"]
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = ['id', 'username', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         print(validated_data)
@@ -32,7 +32,7 @@ class UserSerializer(serializers.ModelSerializer):
 class AreasConocimientoSerializer(serializers.ModelSerializer):
     class Meta:
         model = AreasConocimiento
-        fields = ["id_area_conocimiento", "nombre_area"]
+        fields = ['id_area_conocimiento', 'nombre_area']
 
     def create(self, validated_data):
         return AreasConocimiento.objects.create(**validated_data)
@@ -41,7 +41,7 @@ class AreasConocimientoSerializer(serializers.ModelSerializer):
 class BancosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bancos
-        fields = ["id_banco", "nombre_banco"]
+        fields = ['id_banco', 'nombre_banco']
 
     def create(self, validated_data):
         return Bancos.objects.create(**validated_data)
@@ -50,7 +50,7 @@ class BancosSerializer(serializers.ModelSerializer):
 class UniversidadesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Universidades
-        fields = ["id_universidad", "nombre_universidad"]
+        fields = ['id_universidad', 'nombre_universidad']
 
     def create(self, validated_data):
         return Universidades.objects.create(**validated_data)
@@ -59,7 +59,7 @@ class UniversidadesSerializer(serializers.ModelSerializer):
 class ProfesionesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profesiones
-        fields = ["id_profesion", "nombre_profesion", "id_area_conocimiento"]
+        fields = ['id_profesion', 'nombre_profesion', 'id_area_conocimiento']
 
     def create(self, validated_data):
         return Profesiones.objects.create(**validated_data)
@@ -69,14 +69,14 @@ class UsuariosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
         fields = [
-            "id_usuario",
-            "email",
-            "password",
-            "tipo_usuario",
-            "fecha_creacion",
-            "estatus",
+            'id_usuario',
+            'email',
+            'password',
+            'tipo_usuario',
+            'created_at',
+            'estatus',
         ]
-        extra_kwargs = {"password": {"write_only": True}}
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         return Usuarios.objects.create(**validated_data)
@@ -86,13 +86,13 @@ class EmpresasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empresas
         fields = [
-            "id_empresa",
-            "nombre_empresa",
-            "rif",
-            "sector_industrial",
-            "persona_contacto",
-            "telefono_contacto",
-            "email_contacto",
+            'id_empresa',
+            'nombre_empresa',
+            'rif',
+            'sector_industrial',
+            'persona_contacto',
+            'telefono_contacto',
+            'email_contacto',
         ]
 
     def create(self, validated_data):
@@ -103,14 +103,14 @@ class PostulantesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Postulantes
         fields = [
-            "id_postulante",
-            "nombres",
-            "apellidos",
-            "cedula_identidad",
-            "fecha_nacimiento",
-            "direccion",
-            "telefono",
-            "id_universidad",
+            'id_postulante',
+            'nombres',
+            'apellidos',
+            'cedula_identidad',
+            'fecha_nacimiento',
+            'direccion',
+            'telefono',
+            'id_universidad',
         ]
 
     def create(self, validated_data):
@@ -121,14 +121,14 @@ class VacantesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacantes
         fields = [
-            "id_vacante",
-            "id_empresa",
-            "cargo_vacante",
-            "descripcion_perfil",
-            "salario_ofrecido",
-            "id_profesion",
-            "fecha_publicacion",
-            "estatus",
+            'id_vacante',
+            'id_empresa',
+            'cargo_vacante',
+            'descripcion_perfil',
+            'salario_ofrecido',
+            'id_profesion',
+            'fecha_publicacion',
+            'estatus',
         ]
 
     def create(self, validated_data):
@@ -139,11 +139,11 @@ class PostulacionesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Postulaciones
         fields = [
-            "id_postulacion",
-            "id_postulante",
-            "id_vacante",
-            "fecha_postulacion",
-            "estatus",
+            'id_postulacion',
+            'id_postulante',
+            'id_vacante',
+            'fecha_postulacion',
+            'estatus',
         ]
 
     def create(self, validated_data):
@@ -154,17 +154,17 @@ class ContratosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contratos
         fields = [
-            "id_contrato",
-            "id_postulacion",
-            "fecha_contratacion",
-            "tipo_contrato",
-            "salario_acordado",
-            "tipo_sangre",
-            "contacto_emergencia_nombre",
-            "contacto_emergencia_telefono",
-            "numero_cuenta",
-            "id_banco",
-            "estatus",
+            'id_contrato',
+            'id_postulacion',
+            'fecha_contratacion',
+            'tipo_contrato',
+            'salario_acordado',
+            'tipo_sangre',
+            'contacto_emergencia_nombre',
+            'contacto_emergencia_telefono',
+            'numero_cuenta',
+            'id_banco',
+            'estatus',
         ]
 
     def create(self, validated_data):
@@ -175,13 +175,13 @@ class ExperienciasLaboralesSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExperienciasLaborales
         fields = [
-            "id_experiencia",
-            "id_postulante",
-            "empresa",
-            "cargo_ocupado",
-            "fecha_inicio",
-            "fecha_fin",
-            "descripcion",
+            'id_experiencia',
+            'id_postulante',
+            'empresa',
+            'cargo_ocupado',
+            'fecha_inicio',
+            'fecha_fin',
+            'descripcion',
         ]
 
     def create(self, validated_data):
@@ -192,12 +192,12 @@ class NominasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Nominas
         fields = [
-            "id_nomina",
-            "id_empresa",
-            "mes",
-            "anio",
-            "fecha_generacion",
-            "estatus",
+            'id_nomina',
+            'id_empresa',
+            'mes',
+            'anio',
+            'fecha_generacion',
+            'estatus',
         ]
 
     def create(self, validated_data):
@@ -208,15 +208,15 @@ class RecibosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recibos
         fields = [
-            "id_recibo",
-            "id_nomina",
-            "id_contrato",
-            "salario_base",
-            "monto_deduccion_inces",
-            "monto_deduccion_ivss",
-            "comision_hiring_group",
-            "salario_neto_pagado",
-            "fecha_pago",
+            'id_recibo',
+            'id_nomina',
+            'id_contrato',
+            'salario_base',
+            'monto_deduccion_inces',
+            'monto_deduccion_ivss',
+            'comision_hiring_group',
+            'salario_neto_pagado',
+            'fecha_pago',
         ]
 
     def create(self, validated_data):

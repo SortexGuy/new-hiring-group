@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -63,9 +64,7 @@ class Profesiones(models.Model):
 
 
 # --- Modelos Principales (Usuarios y Roles) ---
-
-
-class Usuarios(models.Model):
+class Usuarios(User):
     class TipoUsuario(models.TextChoices):
         HIRING_GROUP = "HiringGroup", "Hiring Group"
         EMPRESA = "Empresa", "Empresa"
@@ -76,28 +75,28 @@ class Usuarios(models.Model):
         INACTIVO = "Inactivo", "Inactivo"
 
     id_usuario = models.AutoField(primary_key=True)
-    email = models.CharField(
-        max_length=100, unique=True, help_text="Dato de login para todos los usuarios."
-    )
-    password = models.CharField(
-        max_length=255, help_text="Debe almacenarse de forma encriptada (hash)."
-    )
     tipo_usuario = models.CharField(
         max_length=15,
         choices=TipoUsuario.choices,
         help_text="Discriminador para identificar el tipo de usuario.",
     )
-    fecha_creacion = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True
     )  # Django maneja automáticamente el DEFAULT CURRENT_TIMESTAMP
     estatus = models.CharField(
         max_length=10, choices=EstatusUsuario.choices, default=EstatusUsuario.ACTIVO
     )
 
-    class Meta:
-        db_table = "usuarios"
-        verbose_name = "Usuario"
-        verbose_name_plural = "Usuarios"
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.Meta.db_table = "usuarios"
+    #     verbose_name = "Usuario"
+    #     verbose_name_plural = "Usuarios"
+
+    # class Meta:
+    #     db_table = "usuarios"
+    #     verbose_name = "Usuario"
+    #     verbose_name_plural = "Usuarios"
 
     def __str__(self):
         return f"{self.email} ({self.get_tipo_usuario_display()})"

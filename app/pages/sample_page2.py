@@ -1,5 +1,7 @@
 from __future__ import annotations
 import rio
+import httpx
+from .. import SERVER_URL
 
 
 @rio.page(
@@ -12,12 +14,25 @@ class SamplePage2(rio.Component):
     differ in how they're used.
     """
 
+    async def get_users_button_hdlr(self):
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.get(f'{SERVER_URL}dj/api/usuarios/')
+                print(response.headers)
+                if response.status_code == 200:
+                    data = response.json()
+                    print(data)
+                    # self.tasks = [Task(**task) for task in data]
+        except Exception as e:
+            print(f'Error loading tasks: {e}')
+        finally:
+            self.loading = False
+        pass
+
     def build(self) -> rio.Component:
         return rio.Column(
             rio.Text('My App', style='heading2'),
-            rio.Text(
-                'This is a sample page. Replace it with your own content.'
-            ),
+            rio.Button('Get Users', on_press=self.get_users_button_hdlr),
             spacing=2,
             margin=2,
             align_x=0.5,

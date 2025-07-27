@@ -12,6 +12,8 @@ from datetime import datetime
 
 from . import components as comps
 
+SERVER_URL = 'http://localhost:8080/'
+
 # Define a theme for Rio to use.
 #
 # You can modify the colors here to adapt the appearance of your app or website.
